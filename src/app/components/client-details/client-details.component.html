@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-6">
     <div class="btn-group pull-right">
-      <a href="" [routerLink]="['/edit-client'+id]" class="btn btn-secondary">Edit</a>
+      <a href="" [routerLink]="['/edit-client/'+id]" class="btn btn-secondary">Edit</a>
       <button type="button" class="btn btn-danger" (click)="onDeleteClick()">Delete</button>
     </div>
   </div>
@@ -41,7 +41,7 @@
     </div>
     <hr>
       <ul class="list-group">
-        <li class="list-group-item">Contact Email: {{ client.eamil }}</li>
+        <li class="list-group-item">Contact Email: {{ client.email }}</li>
         <li class="list-group-item">Contact Phone: {{ client.phone }}</li>
       </ul>
   </div>

@@ -28,13 +28,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 //Service Imports
 import { ClientService } from './services/client.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
-  {path:'', component:DashboardComponent},
+  {path:'', component:DashboardComponent, canActivate:[AuthGuard]},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
-  {path:'add-client', component:AddClientComponent},
-  {path:'client/:id', component:ClientDetailsComponent}
+  { path: 'add-client', component: AddClientComponent, canActivate: [AuthGuard]},
+  { path: 'client/:id', component: ClientDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'edit-client/:id', component: EditClientComponent, canActivate: [AuthGuard] }
 ];
 
 // Fire2Cradentials
@@ -71,7 +74,9 @@ export const firebaseConfig = {
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
-    ClientService
+    ClientService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
